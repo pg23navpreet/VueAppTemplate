@@ -23,6 +23,10 @@ const router = createRouter({
             path:"/info",
             name:"Info",
             component: () => import('@/routes/Vue3InfoView.vue')
+        },{
+            path:"/mypage",
+            name:"MyPage",
+            component: () => import('@/routes/MyPage.vue')
         }
     ]
 });

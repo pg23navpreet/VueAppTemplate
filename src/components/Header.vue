@@ -28,11 +28,12 @@ Copyright (c) 2022-2023. Kibble Game Studios Inc. All Rights Reserved.
 <template>
 
     <section class="container left">
-        <!--<img alt="VFS Logo" class="logo" src="@/assets/vfs_logo.png" width="125" height="125" @click="$router.push('/')"/>-->
+        <img alt="VFS Logo" class="logo" src="@/Images/pirate.png" @click="$router.push('/')"/>
         <div class="title item">
+            
             <h1>{{ infoStore.name }}</h1>
             <h4>{{ subtitle }} {{ infoStore.version }}</h4>
-            <button @click="infoStore.increment()">Add Version</button>
+            <button @click="infoStore.increment()" class="version">Add Version</button>
         </div>
         <slot class="item"></slot>
     </section>
@@ -46,9 +47,19 @@ Copyright (c) 2022-2023. Kibble Game Studios Inc. All Rights Reserved.
         width: 100%;
     }
 
+    .container{
+        display: flex;
+        justify-content: center;
+    }
+
     .logo {
-        display: block;
-        margin: 0 auto 2rem;
+        width: 10%;
+        height: 10%;
+        
+    }
+
+    .version{
+        float: right;
     }
 
     @media (min-width: 1024px) {

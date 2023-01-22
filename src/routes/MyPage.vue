@@ -40,9 +40,16 @@ Copyright (c) 2023. Kibble Game Studios Inc. All Rights Reserved.
                     <input name="sNumber" type="number" v-model="formData.studentNumber">
                 </label><br/>
 
-                <button value="Submit" id="submit" @click="infoStore.increment()">Submit</button>
 
+                
             </form>
+            <button value="Submit" id="submit" @click="infoStore.increment()">Submit</button>
+
+            <label name="studentName">Student Name:</label>
+            <label name="studentName">{{ formData.name }}</label> <br />
+
+            <label name="studentName">Student Id:</label>
+            <label name="studentName">{{ formData.studentNumber }}</label>
         </div>
     </section>
 

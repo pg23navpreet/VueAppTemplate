@@ -8,6 +8,8 @@ Copyright (c) 2023 Navpreet Singh. All Rights Reserved.
 
     import { useInfoStore } from '@/stores/infoStore.js'
 
+    import studentname from '@/components/studentInfo.vue'
+
     class MyPageController extends Controller {
 
         constructor( name, subComponentList = []) {
@@ -16,33 +18,39 @@ Copyright (c) 2023 Navpreet Singh. All Rights Reserved.
                 formData: {
                     name:"",
                     studentNumber:0,
+                },
+                data:{
+                    value: false,
+                },
+                components:{
+                    studentname,
                 }
+                
             }
             this.injectStore( useInfoStore );
-            this.init();
         }
 
-        init(){
-            console.log("working");
-            var ele={
-                el: "#studentData",
-                data: {active: false,},
-            }
-            console.log(ele.data.active);
+        viewData(){
+            return this.data.value;
+        }
+
+        changeValue(){
+            this.data.value = true;
         }
     }               
     
-    export default new MyPageController('MyPage');
+    export default new MyPageController('myPage', {studentname} );
 
 </script>
+
 <template>
 
     <section class="flexbox columns myPage">
         <h1 class="flexitem left title">Student Information</h1>
-        <h3>Enter new student below</h3>
-
+    
+        <studentname><slot><h3>Sup</h3></slot></studentname>
         <div class="flexitem dialog">
-
+            
             <!-- https://blog.logrocket.com/deep-dive-vue-event-handling/#:~:text=To%20prevent%20an%20event's%20default,after%20the%20form%20is%20submitted.-->
             <form class="student-info" v-on:submit.stop.prevent>
                 
@@ -54,24 +62,22 @@ Copyright (c) 2023 Navpreet Singh. All Rights Reserved.
                     <input name="sNumber" type="number" v-model="formData.studentNumber">
                 </label><br/>
 
-                <button @click="infoStore.viewData()">Submit</button>
-
+                <button @click="changeValue()">Submit</button>
+            
             </form>
-<div  id="studentData">
-            <div v-show="active">
-                <label name="studentName">Student Name:</label>
-                <label name="studentName">{{ formData.name }}</label> <br />
+            <div v-show="viewData()" id="studentData" >
+                <label name="studentName">Student Name: </label>
+                <label name="studentName"><slot>{{ formData.name }}Nothing to see here yet</slot></label><br />
 
                 <label name="studentID">Student Id:</label>
                 <label name="studentID">{{ formData.studentNumber }}</label>
             </div>
         </div>
-        </div>
     </section>
 
 </template>
 <style scoped>
-    /* Local styles for this template */
+    /* Local styles for this template */ 
     .myPage {
         margin:2vw;
         border: 1px solid black;
@@ -94,7 +100,6 @@ Copyright (c) 2023 Navpreet Singh. All Rights Reserved.
         font-size: 1.2em;
         font-weight: 700;
         height: 1.4em;
-
     }
 
     button {

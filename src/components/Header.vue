@@ -12,10 +12,11 @@ Copyright (c) 2022-2023. Kibble Game Studios Inc. All Rights Reserved.
         constructor( name, subComponentList = []) {
             super( name, subComponentList );
             this.vm = {
-                subtitle: "VFS Programming for Games",
+                version: 1.12,
             }
             this.props = {
-                title: String
+                title: String,
+                subtitle: String,
             }
 
             this.injectStore( useInfoStore );
@@ -31,15 +32,23 @@ Copyright (c) 2022-2023. Kibble Game Studios Inc. All Rights Reserved.
         <img alt="VFS Logo" class="logo" src="@/Images/pirate.png" @click="$router.push('/')"/>
         <div class="title item">
             
-            <h1>{{ infoStore.name }}</h1>
+            <h1>{{ title }}</h1>
             <h4>{{ subtitle }} {{ infoStore.version }}</h4>
-            <button @click="infoStore.increment()" class="version">Add Version</button>
         </div>
-        <slot class="item"></slot>
+        <slot>
+            <div>
+                Default Content
+            </div>
+        </slot>
     </section>
 
 </template>
+
 <style scoped>
+    .wrapper, .container{
+        background-color:rgb(72, 114, 114);
+    }
+
     .title h1, .title h4 {
         float:right;
         margin-right: 2vw;
@@ -49,7 +58,7 @@ Copyright (c) 2022-2023. Kibble Game Studios Inc. All Rights Reserved.
 
     .container{
         display: flex;
-        justify-content: center;
+        justify-content: space-between;
     }
 
     .logo {

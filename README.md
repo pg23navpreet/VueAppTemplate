@@ -1,6 +1,16 @@
-# vfs-vue-template
+# Vue-App
 
-This template should help get you started developing with Vue 3 in Vite.
+This vue app shows and fullfills the requirements for the first assignment:
+>create a single new route/edge to test your component
+    -add styling to the page to center your component in a box in the middle of the page area
+    -add a menu item to the navbar to access your route/edge
+    -add a corresponding route object to the router
+>create a new component based on the sample
+>have the component illustrate
+    -at least one slot, one property, and two view model attributes
+    -at least one controller method triggered by an event handler
+    -show the use of one Vue directives
+    -add two classes of component styles specific to the component
 
 ## Recommended IDE Setup
 
@@ -12,24 +22,18 @@ See [Vite Configuration Reference](https://vitejs.dev/config/).
 
 ## Project Setup
 
+Assuming you have node.js installed, run in terminal
 ```sh
 npm install
 ```
 
-### Compile and Hot-Reload for Development
+## Compile and Hot-Reload for Development
 
 ```sh
 npm run dev
 ```
 
-### Compile and Minify for Production
+## Navigation
 
-```sh
-npm run build
-```
-
-### Run Unit Tests with [Vitest](https://vitest.dev/)
-
-```sh
-npm run test:unit
-```
+1. Navigate to MyPage using tha nav bar and enter student info (anything, arbitrary)
+2. Click submit, that shows the student infor just entered

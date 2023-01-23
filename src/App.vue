@@ -11,7 +11,9 @@ import VFSNavbar from '@/components/Navbar.vue'
 <template>
 
     <header class="wrapper container columns">
-        <VFSHeader title="A sample app" />
+        <VFSHeader title="A sample app"  subtitle="A New App">
+            <div> New content </div>
+        </VFSHeader>
         <VFSNavbar />
     </header>
     <main>

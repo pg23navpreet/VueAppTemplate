@@ -19,7 +19,9 @@
                     { path:"/", section: "Home" },
                     { path:"/about", section: "About" },
                     { path:"/info", section: "Info" },
-                    { path:"/mypage", section: "MyPage" }                        
+                    { path:"/mypage", section: "MyPage" },
+                    { path:"/chart", section: "Chart" }                        
+
                 ]
             }
 

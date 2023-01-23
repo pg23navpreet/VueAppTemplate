@@ -33,6 +33,14 @@ export const useInfoStore = defineStore('info', {
                 this.mainVersion++;
                 this.subVersion = 0
             }
+        },
+        viewData(){
+            console.log("yo");
+            var ele = {
+                el: "#studentData",
+                active: true
+            }
+            return ele;
         }
     }
 })

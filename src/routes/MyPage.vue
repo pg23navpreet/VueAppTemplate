@@ -1,10 +1,12 @@
 <!--
 <VFSHome name="Title" />
-Copyright (c) 2023. Kibble Game Studios Inc. All Rights Reserved.
+Copyright (c) 2023 Navpreet Singh. All Rights Reserved.
 -->
 <script>
 
     import Controller from '@/plugins/controller'
+
+    import { useInfoStore } from '@/stores/infoStore.js'
 
     class MyPageController extends Controller {
 
@@ -16,9 +18,20 @@ Copyright (c) 2023. Kibble Game Studios Inc. All Rights Reserved.
                     studentNumber:0,
                 }
             }
+            this.injectStore( useInfoStore );
+            this.init();
         }
-    }
 
+        init(){
+            console.log("working");
+            var ele={
+                el: "#studentData",
+                data: {active: false,},
+            }
+            console.log(ele.data.active);
+        }
+    }               
+    
     export default new MyPageController('MyPage');
 
 </script>
@@ -30,26 +43,29 @@ Copyright (c) 2023. Kibble Game Studios Inc. All Rights Reserved.
 
         <div class="flexitem dialog">
 
-            <form class="student-info">
+            <!-- https://blog.logrocket.com/deep-dive-vue-event-handling/#:~:text=To%20prevent%20an%20event's%20default,after%20the%20form%20is%20submitted.-->
+            <form class="student-info" v-on:submit.stop.prevent>
                 
                 <label for="name">Student Name:
-                    <input name="name" v-model="formData.name">
+                    <input name="name" v-model="formData.name"> 
                 </label><br/>
 
                 <label for="sNumber">Student Number:
                     <input name="sNumber" type="number" v-model="formData.studentNumber">
                 </label><br/>
 
+                <button @click="infoStore.viewData()">Submit</button>
 
-                
             </form>
-            <button value="Submit" id="submit" @click="infoStore.increment()">Submit</button>
+<div  id="studentData">
+            <div v-show="active">
+                <label name="studentName">Student Name:</label>
+                <label name="studentName">{{ formData.name }}</label> <br />
 
-            <label name="studentName">Student Name:</label>
-            <label name="studentName">{{ formData.name }}</label> <br />
-
-            <label name="studentName">Student Id:</label>
-            <label name="studentName">{{ formData.studentNumber }}</label>
+                <label name="studentID">Student Id:</label>
+                <label name="studentID">{{ formData.studentNumber }}</label>
+            </div>
+        </div>
         </div>
     </section>
 
@@ -86,5 +102,7 @@ Copyright (c) 2023. Kibble Game Studios Inc. All Rights Reserved.
         margin: .25em;
         padding-bottom: 1.5em;
     }
+
+    
 </style>
 

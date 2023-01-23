@@ -4,7 +4,7 @@ This vue app shows and fullfills the requirements for the first assignment:
 >create a single new route/edge to test your component
     -add styling to the page to center your component in a box in the middle of the page area
     -add a menu item to the navbar to access your route/edge
-    -add a corresponding route object to the router
+    -add a corresponding route object to the router \n
 >create a new component based on the sample
 >have the component illustrate
     -at least one slot, one property, and two view model attributes

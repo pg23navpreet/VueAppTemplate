@@ -52,7 +52,7 @@ Copyright (c) 2023 Navpreet Singh. All Rights Reserved.
         <div class="flexitem dialog">
             
             <!-- https://blog.logrocket.com/deep-dive-vue-event-handling/#:~:text=To%20prevent%20an%20event's%20default,after%20the%20form%20is%20submitted.-->
-            <form class="student-info" v-on:submit.stop.prevent>
+            <form class="student-info" @submit.stop.prevent>
                 
                 <label for="name">Student Name:
                     <input name="name" v-model="formData.name"> 
@@ -67,7 +67,7 @@ Copyright (c) 2023 Navpreet Singh. All Rights Reserved.
             </form>
             <div v-show="viewData()" id="studentData" >
                 <label name="studentName">Student Name: </label>
-                <label name="studentName"><slot>{{ formData.name }}Nothing to see here yet</slot></label><br />
+                <label name="studentName">{{ formData.name }}</label><br />
 
                 <label name="studentID">Student Id:</label>
                 <label name="studentID">{{ formData.studentNumber }}</label>

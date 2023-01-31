@@ -4,27 +4,55 @@ import { RouterLink, RouterView } from 'vue-router'
 
 import VFSHeader from '@/components/Header.vue'
 import VFSNavbar from '@/components/Navbar.vue'
+//import VFSTunablePanel from '@/components/TunablePanel.vue'
+// import VFSLoadingSpinner from '@/components/LoadingSpinner.vue'
 
-// todo import appInfoStore
+import Controller from '@/plugins/controller'
+
+    class AppController extends Controller {
+
+        constructor( name, subComponentList = []) {
+            super( name, subComponentList )
+            this.vm = {}
+            this.props = {}
+            this.emits = []
+            //this.injectGetters([/* List of names in array */]);
+            //this.injectActions(['actionMethod','anotherAction'])
+        }
+    }
+
+    const app = new AppController('VFSApp', {
+        VFSHeader,
+        VFSNavbar,
+        // VFSTunablePanel
+    });
 
 </script>
 <template>
 
     <header class="wrapper container columns">
-        <VFSHeader title="A sample app"  subtitle="A New App">
-            <div> New content </div>
+        <VFSHeader title="Telemetry Viewer" subtitle="Team Project">
+            <div> My real content </div>
         </VFSHeader>
         <VFSNavbar />
     </header>
     <main>
-        <RouterView />
+        <RouterView  />
+        <aside class="small-item">
+            <VFSTunablePanel title="Game Variables" />
+        </aside>
     </main>
+
+    <footer>
+        Copyright &copy; 2023 Scott Henshaw
+    </footer>
 
 </template>
 <style>
 
     header {
-        background: #D10034;
+        background: lightblue;
+        color: black;
         flex-direction: column;
         align-items: center;
         justify-content: space-between;
@@ -32,10 +60,26 @@ import VFSNavbar from '@/components/Navbar.vue'
         width: 100vw;
     }
 
-    /* VFSHeader {
-        line-height: 1.5;
-        max-height: 20vh;
-    } */
+    main {
+        display: flex;
+        justify-content: space-around;
+        width: 95vw;
+    }
+
+    .small-item {
+        width: 30vw;
+    }
+
+    router-view {
+        width:66vw;
+        flex-grow: 4;
+    }
+
+    aside {
+        display: inline-block;
+    }
+
+
 
     @media (min-width: 1024px) {
       header {

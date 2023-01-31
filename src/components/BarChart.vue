@@ -18,11 +18,13 @@
 
             this.vm = {
                     chartData: {
+                        name:"yoo",
+
                         labels: [ 'January', 'February', 'March' ],
                         datasets: [ { data: [40, 20, 12] } ]
                     },
                     options: {
-                        responsive: false,
+                        responsive: true,
                         maintainAspectRatio:false,
                     },
                 

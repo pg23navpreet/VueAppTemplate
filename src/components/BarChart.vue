@@ -16,12 +16,15 @@
             super( name, subComponentList )
             ChartJS.register( Title, Tooltip, Legend, BarElement, CategoryScale, LinearScale)
 
+
+            console.log(VFSEditableData.props.editData.x);
             this.vm = {
+                    
                     chartData: {
                         name:"yoo",
 
-                        labels: [ 'January', 'February', 'March' ],
-                        datasets: [ { data: [40, 20, 12] } ]
+                        labels: [ 'Speed', 'X', 'Y', 'Z' ],
+                        datasets: [ { data: [VFSEditableData.props.editData.dt, VFSEditableData.props.editData.x, VFSEditableData.props.editData.y,VFSEditableData.props.editData.z] } ]
                     },
                     options: {
                         responsive: true,
@@ -29,39 +32,11 @@
                     },
                 
                 data: {
-                    labels: ['Delta Time', 'X', 'Y', 'Z', 'Action'],
-                    datasets: [
-                        { data: [12345, 100, 100, 10, 1]},
-                        { data: [12346, 110, 130, 15, 2]},
-                        { data: [12347, 120, 140, 1, 2]},
-                        { data: [12348, 120, 150, 0, 3]},
-                        { data: [12349, 110, 170, 9, 1]},
-                    ],
+                    
                     
                     
                 },
-                oldData: [{
-                        x: 100, y: 100, z: 10,
-                        action: 1,
-                        time: 12345,
-                    },{
-                        x: 115, y: 110, z: 10,
-                        action: 1,
-                        time: 12444,
-                    },{
-                        x: 110, y: 85, z: 10,
-                        action: 3,
-                        time: 12555,
-                    },{
-                        x: 95, y: 130, z: 10,
-                        action: 2,
-                        time: 12666,
-                    },{
-                        x: 90, y: 150, z: 10,
-                        action: 1,
-                        time: 12777,
-                    },
-                ],
+
                 visible: true,
             }
             this.props = {
@@ -100,7 +75,7 @@
         </div>
         <div id="chart-data" class="item outline" v-show="visible">
             <!-- <div v-for="telemetryRec, i in data.dataSets" :key="i"> -->
-                <VFSEditableData :data="oldData" />
+                <VFSEditableData />
             <!-- </div> -->
         </div>
 

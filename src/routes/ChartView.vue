@@ -15,6 +15,7 @@ Copyright (c) 2018. Scott Henshaw, Kibble Online Inc. All Rights Reserved.
                 name: 'Chart Page',
                 chartList: ['Bar Chart', 'Line Chart', 'Pie Chart', 'Heatmap'],
                 visible: true,
+                
             }
         }
     }
@@ -30,9 +31,7 @@ Copyright (c) 2018. Scott Henshaw, Kibble Online Inc. All Rights Reserved.
             <div v-if="name == 'Bar Chart'">
                 <VFSBarChart :title="name" v-show="visible"/>
             </div>
-            <div v-else-if="name == 'Line Chart'">
-                <VFSBarChart :title="name" v-show="visible"/>
-            </div>
+            
         </div>
     </section>
 

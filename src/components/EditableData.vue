@@ -17,23 +17,31 @@
 
         constructor( name, subComponentList = []) {
             super( name, subComponentList )
+            
             this.vm = {
                 editData: {
                     x: 90, y: 150, z: 10,
                     action: IDLE,
-                    dt: 12777,  // DeltaTime = dt
+                    dt: 10,  // DeltaTime = dt
                 },
+                
             }
+            
             this.props = {
-                data: Object,
+                editData: {
+                    x: this.vm.editData.x, y: this.vm.editData.y, z: this.vm.editData.z,
+                    action: IDLE,
+                    dt: this.vm.editData.dt,  // DeltaTime = dt
+                }
             }
+            console.log(this.props.editData.x)
             this.emits = []
             //this.injectGetters([/* List of names in array */]);
             //this.injectActions(['actionMethod','anotherAction'])
         }
 
         resetX() {
-            this.editData.x = 100;
+            //this.vm.editData.x = 100;
         }
 
         save( newData ) {
@@ -52,10 +60,17 @@
     <section class="component outline">
 
         <form class="chart-data-element" @submit.prevent="save( editData )">
-            <input name="Delta-Time" type="number" v-model="editData.dt" />
+            <label>Speed</label>
+            <input name="Delta-Time" type="number" v-model="this.editData.dt" />
+            <label>Speed</label>
+            <label>{{this.editData.dt}}</label>
+
             <input name="X" type="number" v-model="editData.x" />
+            <label>Y</label>
             <input name="Y" type="number" v-model="editData.y" />
+            <label>Z</label>
             <input name="Z" type="number" v-model="editData.z" />
+            <label>Jump</label>
             <input name="action" type="text" v-model="editData.action" >
         </form>
 
